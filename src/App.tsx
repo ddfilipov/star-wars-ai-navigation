@@ -6,9 +6,17 @@ import { device } from "./utils/breakpoints";
 
 const Container = styled.div`
     display: grid;
+    grid-template-columns: 300px;
+    justify-content: center;
     /* background-color: red; */
     /* border: 1px solid black; */
     row-gap: 10px;
+    max-width: 1440px;
+    margin: 8rem auto 4rem auto;
+
+    h1 {
+        text-align: center;
+    }
 
     div {
         border: 1px solid black;
@@ -31,6 +39,7 @@ const Container = styled.div`
 function App() {
     return (
         <Container className="App">
+            <h1>Star Wars Database</h1>
             <div>
                 <Link to="/people">People</Link>
             </div>
