@@ -1,10 +1,12 @@
 import React from "react";
 import "./App.css";
+import Category from "./components/Category";
+import People from "./components/People";
 
 function App() {
     return (
         <div className="App">
-            <h2>CATEGORIES</h2>
+            <People />
         </div>
     );
 }
