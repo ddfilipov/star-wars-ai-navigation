@@ -9,7 +9,7 @@ type PersonType = {
 
 const baseURL = "https://swapi.dev/api/";
 
-const People = () => {
+export default function People() {
     const [person, setPerson] = useState<PersonType>();
 
     useEffect(() => {
@@ -27,6 +27,4 @@ const People = () => {
             <span>Name: {person.gender}</span>
         </div>
     );
-};
-
-export default People;
+}

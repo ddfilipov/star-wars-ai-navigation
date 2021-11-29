@@ -1,12 +1,21 @@
 import React from "react";
 import "./App.css";
-import Category from "./components/Category";
-import People from "./components/People";
+import { Link } from "react-router-dom";
+
+
 
 function App() {
     return (
         <div className="App">
-            <People />
+            <div>
+                <Link to="/people">People</Link>
+            </div>
+            <div>
+                <Link to="/starships">Starships</Link>
+            </div>
+            <div>
+                <Link to="/planets">Planets</Link>
+            </div>
         </div>
     );
 }
