@@ -1,5 +1,8 @@
-const Person = () => {
-    return <div></div>;
-};
+interface PersonType{
+    
+}
+export default function Person() {
+    return <div>
 
-export default Person;
+    </div>;
+}

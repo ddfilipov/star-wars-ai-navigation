@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 type PersonType = {
     name: string;
@@ -7,30 +8,44 @@ type PersonType = {
     gender: string;
 };
 
-const baseURL = "https://swapi.dev/api/";
+const client = axios.create({
+    baseURL: "https://swapi.dev/api/",
+});
+
+const Container = styled.div`
+    display: grid;
+    grid-template-columns: 300px;
+    justify-content: center;
+    text-align: center;
+    row-gap: 10px;
+
+    a {
+        display: block;
+        border: 1px solid black;
+        padding: 20px 10px 20px 10px;
+    }
+`;
 
 export default function People() {
-    const [person, setPerson] = useState<PersonType>();
-    // const [people, setPeople] = useState<PersonType[]>([]);
+    const [people, setPeople] = useState<PersonType[]>([]);
 
     useEffect(() => {
-        axios.get(`${baseURL}/people/1`).then((response) => {
-            setPerson(response.data);
-            console.log(response.data);
-        });
+        async function getPeople() {
+            const response = await client.get("people/");
+            console.log(response.data.results);
+            setPeople(response.data.results);
+        }
+        getPeople();
     }, []);
 
-    if (!person) return null;
+    if (!people) return null;
 
     return (
-        <div>
-            {/* {people.map((persona) => ( */}
-            <ul>
-                <li>Name: {person.name}</li>
-                <li>Height: {person.height}</li>
-                <li>Gender: {person.gender}</li>
-            </ul>
-            {/* ))} */}
-        </div>
+        <Container>
+            <h2>People</h2>
+            {people.map((persona) => (
+                <a>{persona.name}</a>
+            ))}
+        </Container>
     );
 }

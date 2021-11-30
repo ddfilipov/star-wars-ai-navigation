@@ -29,6 +29,7 @@ const Container = styled.div`
         a {
             display: grid;
             text-decoration: inherit;
+            color: inherit;
         }
     }
 
